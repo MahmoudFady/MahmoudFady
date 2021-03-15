@@ -4,6 +4,10 @@
   --mainTextColor: #646f87;
   --headerMainColor: #293651;
 }
+body{
+  padding: 0px;
+  margin:0px
+}
 * {
   padding: 0px;
   margin: 0px;
