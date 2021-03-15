@@ -6,7 +6,8 @@
 }
 body{
   padding: 0px;
-  margin:0px
+  margin:0px;
+    background-color: #f00;
 }
 * {
   padding: 0px;
