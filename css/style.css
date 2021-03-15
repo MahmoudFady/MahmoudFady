@@ -345,8 +345,9 @@ section.statistics .container .row div div.single > svg {
   color: var(--headerMainColor);
   height: 50px;
   width: 50px;
-  float: left;
+  float: left !important;
   margin-right: 20;
+  font-size: 30px !important  ;
 }
 section.statistics .container .row div div.single div {
   width: 150px;
