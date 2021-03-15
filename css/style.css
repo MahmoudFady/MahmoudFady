@@ -341,7 +341,7 @@ section.pricing
 }
 /*=> END_PIRCING_STYLE*/
 /*=> START_STATISTICS_STYLE*/
-section.statistics .container .row div div.single > svg {
+section.statistics .container .row div div.single i{
   display: block;
   color: var(--headerMainColor);
   height: 50px;
