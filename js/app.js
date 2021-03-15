@@ -22,6 +22,7 @@ let wordWriter = (ele, word) => {
     }
   }, 400);
 };
+
 // START_WORD_WRITER_FUNCTIION_CODEING
 
 const headerTitle = document.getElementById("headerTitle");
@@ -29,8 +30,16 @@ const headerTitle = document.getElementById("headerTitle");
 wordWriter(headerTitle, "Web Developer");
 /*=> START_TOGGLEg_ACTIVE_CLASS_INTO_NAVBAR_LINKS */
 const links = document.querySelector("ul.navbar-nav").children;
+console.log(links);
 for (let i = 0; i < links.length; i++) {
-  links[i].onclick = (evt) => {
+  links[i].onclick = function () {
+    const dataScroll = this.getAttribute("data-scroll");
+    const ele = document.querySelector("." + dataScroll);
+    window.scrollTo({
+      top: ele.offsetTop - 50,
+      left: 0,
+      behavior: "smooth",
+    });
     for (let i = 0; i < links.length; i++) {
       links[i].classList.remove("active");
     }
