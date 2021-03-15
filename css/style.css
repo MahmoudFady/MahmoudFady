@@ -321,6 +321,15 @@ section.pricing .pricing-single div.divider {
   background-color: var(--mainTextColor);
   margin-bottom: 25px;
 }
+section.pricing .pricing-single div.divider div {
+  height: 100%;
+  width: 0%;
+  background-color: var(--mainColor);
+  transition: all 0.5s linear;
+}
+section.pricing .pricing-single:hover div.divider div {
+  width: 100%;
+}
 section.pricing .pricing-single button {
   width: 150px;
   border-radius: 0px 0px 20px 0px;
