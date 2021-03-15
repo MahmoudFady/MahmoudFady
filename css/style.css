@@ -430,3 +430,18 @@ section.footer h6 {
 }
 /*=> END_FOOTER_STYLE*/
 /*end style*/
+@media (max-width: 600px) {
+  h1 {
+    font-size: 26px !important;
+  }
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 18px !important;
+  }
+  .about .about-skills .skill-item .skill-bar {
+    width: 300px;
+  }
+}
