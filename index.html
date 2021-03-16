@@ -26,9 +26,31 @@
   </head>
 
   <body>
+    <div class="toTop container">
+      <i class="fa fa-chevron-up"></i>
+    </div>
+    <div class="sideNavBar">
+      <div class="colors">
+        <header>
+          <i class="fa fa-palette"></i>
+          <h6>fav color</h6>
+        </header>
+        <ul>
+          <li style="background-color: #00a78e" class="activeColor">
+            <i class="fa fa-check"></i>
+          </li>
+          <li style="background-color: #f39189"><i class="fa fa-check"></i></li>
+          <li style="background-color: #4a47a3"><i class="fa fa-check"></i></li>
+          <li style="background-color: #810034"><i class="fa fa-check"></i></li>
+        </ul>
+      </div>
+    </div>
     <!--#=> START_NAVBAR-->
     <nav class="navbar navbar-expand-md bg-light">
-      <a href="#" class="navbar-brand">Mahmoud</a>
+      <div class="navbar-brand">
+        <span id="settingIcon"><i class="fa fa-cog"></i></span>
+        <a href="#" class="">Mahmoud</a>
+      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse">
         <i class="fa fa-bars"></i>
       </button>

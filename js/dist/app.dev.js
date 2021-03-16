@@ -1,11 +1,31 @@
 "use strict";
 
+// CHECK SOME CODE AFTER WINDOW LOADED
+window.onload = function () {
+  var favColor = localStorage.getItem("favColor");
+
+  if (favColor) {
+    document.documentElement.style.setProperty("--mainColor", favColor);
+  }
+}; // CHECK SOME CODE AFTER WINDOW LOADED
+// START_SIDENAVBAR_TOGGLER
+
+
+var settingIcon = document.getElementById("settingIcon");
+console.log(settingIcon);
+var sideNavBar = document.querySelector("div.sideNavBar");
+
+settingIcon.onclick = function () {
+  sideNavBar.classList.toggle("activeSideNavBar");
+}; // END_SIDENAVBAR_TOGGLER
 // START_WORD_WRITER_FUNCTION_CODEING
 
 /**
  * => ACCEPT ELEMENT TO MANPULATE THAT FUNCTION
  * =>  SECOND PARAMTER WORD TO WRITE
  */
+
+
 var wordWriter = function wordWriter(ele, word) {
   var titleInReverse = false;
   var index = 0;
@@ -33,7 +53,6 @@ wordWriter(headerTitle, "Web Developer");
 /*=> START_TOGGLEg_ACTIVE_CLASS_INTO_NAVBAR_LINKS */
 
 var links = document.querySelector("ul.navbar-nav").children;
-console.log(links);
 
 var _loop = function _loop(i) {
   links[i].onclick = function () {
@@ -45,8 +64,8 @@ var _loop = function _loop(i) {
       behavior: "smooth"
     });
 
-    for (var _i2 = 0; _i2 < links.length; _i2++) {
-      links[_i2].classList.remove("active");
+    for (var _i4 = 0; _i4 < links.length; _i4++) {
+      links[_i4].classList.remove("active");
     }
 
     links[i].classList.toggle("active");
@@ -92,3 +111,54 @@ for (var _i = 0; _i < skillPercents.length; _i++) {
   skillPercents[_i].children[0].textContent = percent;
 }
 /*=> DAYNMICALLY_SET_WIDTH_TO_SKILL */
+
+/*=> ON_SCROLL_CODES */
+
+
+var toTop = document.querySelector("div.toTop");
+
+window.onscroll = function () {
+  var scroll = window.scrollY;
+
+  if (scroll > 400) {
+    toTop.style.bottom = "50px";
+  } else {
+    toTop.style.bottom = "-50px";
+  }
+
+  toTop.onclick = function () {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  };
+};
+/*=> ON_SCROLL_CODES */
+//document.documentElement.style.setProperty("--mainColor", "#f00");
+
+/**
+ * => CHENCK_COLOR_CODEING
+ */
+
+
+var colorList = document.querySelectorAll(".sideNavBar div.colors ul li"); // LOOP TO ALL COLOR LIST
+
+for (var _i2 = 0; _i2 < colorList.length; _i2++) {
+  // WHEN SOME OF THEM CLICKED
+  colorList[_i2].onclick = function () {
+    // FIRST EXTRACT IT'S BACKGROUND COLOR
+    var activeColor = this.style.backgroundColor; // SECOND UPDATE COLOR
+
+    document.documentElement.style.setProperty("--mainColor", activeColor); // THIRD TRANPARENT ALL CHECK ICON IN ALL COLOR LIST
+
+    for (var _i3 = 0; _i3 < colorList.length; _i3++) {
+      colorList[_i3].children[0].style.color = "transparent";
+    } // 4TH SET COLOR WHITE TO ACTIVE COLOR LIST
+
+
+    this.children[0].style.color = "#fff"; // SAVE UPDATE COLOR INTO LOCALSTORAGE
+
+    localStorage.setItem("favColor", activeColor);
+  };
+}
