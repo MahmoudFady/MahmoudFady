@@ -68,7 +68,8 @@ button {
 .activeSideNavBar {
   left: 0px;
 }
-.sideNavBar div > header > svg {
+.sideNavBar div > header > svg,
+.sideNavBar div > header > i {
   color: var(--mainTextColor);
   float: left;
   margin-right: 10px;

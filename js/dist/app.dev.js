@@ -2,10 +2,17 @@
 
 // CHECK SOME CODE AFTER WINDOW LOADED
 window.onload = function () {
+  var colorList = document.querySelectorAll(".sideNavBar div.colors ul li");
   var favColor = localStorage.getItem("favColor");
+  var colorIndex = localStorage.getItem("colorIndex");
 
   if (favColor) {
+    for (var i = 0; i < colorList.length; i++) {
+      colorList[i].children[0].style.color = "transparent";
+    }
+
     document.documentElement.style.setProperty("--mainColor", favColor);
+    colorList[colorIndex].children[0].style.color = "#fff";
   }
 }; // CHECK SOME CODE AFTER WINDOW LOADED
 // START_SIDENAVBAR_TOGGLER
@@ -64,8 +71,8 @@ var _loop = function _loop(i) {
       behavior: "smooth"
     });
 
-    for (var _i4 = 0; _i4 < links.length; _i4++) {
-      links[_i4].classList.remove("active");
+    for (var _i3 = 0; _i3 < links.length; _i3++) {
+      links[_i3].classList.remove("active");
     }
 
     links[i].classList.toggle("active");
@@ -144,7 +151,7 @@ window.onscroll = function () {
 
 var colorList = document.querySelectorAll(".sideNavBar div.colors ul li"); // LOOP TO ALL COLOR LIST
 
-for (var _i2 = 0; _i2 < colorList.length; _i2++) {
+var _loop2 = function _loop2(_i2) {
   // WHEN SOME OF THEM CLICKED
   colorList[_i2].onclick = function () {
     // FIRST EXTRACT IT'S BACKGROUND COLOR
@@ -152,13 +159,18 @@ for (var _i2 = 0; _i2 < colorList.length; _i2++) {
 
     document.documentElement.style.setProperty("--mainColor", activeColor); // THIRD TRANPARENT ALL CHECK ICON IN ALL COLOR LIST
 
-    for (var _i3 = 0; _i3 < colorList.length; _i3++) {
-      colorList[_i3].children[0].style.color = "transparent";
+    for (var _i4 = 0; _i4 < colorList.length; _i4++) {
+      colorList[_i4].children[0].style.color = "transparent";
     } // 4TH SET COLOR WHITE TO ACTIVE COLOR LIST
 
 
     this.children[0].style.color = "#fff"; // SAVE UPDATE COLOR INTO LOCALSTORAGE
 
     localStorage.setItem("favColor", activeColor);
+    localStorage.setItem("colorIndex", _i2);
   };
+};
+
+for (var _i2 = 0; _i2 < colorList.length; _i2++) {
+  _loop2(_i2);
 }
