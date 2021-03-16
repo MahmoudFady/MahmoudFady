@@ -1,8 +1,14 @@
 // CHECK SOME CODE AFTER WINDOW LOADED
 window.onload = () => {
+  const colorList = document.querySelectorAll(".sideNavBar div.colors ul li");
   const favColor = localStorage.getItem("favColor");
+  const colorIndex = localStorage.getItem("colorIndex");
   if (favColor) {
+    for (let i = 0; i < colorList.length; i++) {
+      colorList[i].children[0].style.color = "transparent";
+    }
     document.documentElement.style.setProperty("--mainColor", favColor);
+    colorList[colorIndex].children[0].style.color = "#fff";
   }
 };
 // CHECK SOME CODE AFTER WINDOW LOADED
@@ -129,5 +135,6 @@ for (let i = 0; i < colorList.length; i++) {
     this.children[0].style.color = "#fff";
     // SAVE UPDATE COLOR INTO LOCALSTORAGE
     localStorage.setItem("favColor", activeColor);
+    localStorage.setItem("colorIndex", i);
   };
 }
