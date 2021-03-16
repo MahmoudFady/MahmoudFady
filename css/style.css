@@ -51,16 +51,68 @@ button {
   font-weight: bold;
 }
 /*=> END_GOLOBAL_STYLE*/
+/*=> START_SIDENAVBAR_STYLE*/
+.sideNavBar {
+  padding-top: 25px;
+  height: calc(100% - 50px);
+  padding-left: 25px;
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  top: 70px;
+  left: -250px;
+  z-index: 99;
+  transition: all 0.6s linear;
+  color: #fff;
+}
+.activeSideNavBar {
+  left: 0px;
+}
+.sideNavBar div > header > svg {
+  color: var(--mainTextColor);
+  float: left;
+  margin-right: 10px;
+}
+.sideNavBar div.colors ul li {
+  list-style: none;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  background-color: #f00;
+  border-radius: 50%;
+  margin-right: 5px;
+  cursor: pointer;
+  text-align: center;
+  color: inherit !important;
+}
+.sideNavBar div.colors ul li > svg {
+  color: transparent;
+}
+.sideNavBar div.colors ul li.activeColor > svg {
+  color: #fff;
+}
+/*=> END_SIDENAVBAR_STYLE*/
+
 /*=> START_NAVBAR_STYLE*/
 .navbar {
   position: sticky;
   top: 0px;
   z-index: 999;
 }
-.navbar .navbar-brand {
-  color: var(--mainColor);
+.navbar .navbar-brand #settingIcon {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+  color: var(--mainTextColor);
+  cursor: pointer;
+  font-size: 18px;
 }
-.navbar .navbar-brand::first-letter {
+.navbar .navbar-brand > a {
+  color: var(--mainColor);
+  display: inline-block;
+}
+.navbar .navbar-brand > a::first-letter {
   background-color: var(--mainColor);
   color: #fff;
   display: block;
@@ -68,6 +120,7 @@ button {
   border-radius: 0px 10px;
 }
 .navbar .navbar-toggler {
+  width: 60px;
   color: var(--mainTextColor);
 }
 .navbar .collapse .navbar-nav {
@@ -445,6 +498,26 @@ section.footer h6 {
   color: var(--headerMainColor);
 }
 /*=> END_FOOTER_STYLE*/
+/*=> START_TO_TOP_ICON_STYLE*/
+.toTop {
+  position: fixed;
+  right: 50px;
+  bottom: -50px;
+  background-color: #f00;
+  height: 50px;
+  width: 50px;
+  background-color: var(--mainColor);
+  color: #fff;
+  line-height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.8s linear;
+  z-index: 99;
+}
+/*=> START_TO_TOP_ICON_STYLE*/
+
 /*end style*/
 @media (max-width: 600px) {
   h1 {

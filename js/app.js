@@ -1,3 +1,19 @@
+// CHECK SOME CODE AFTER WINDOW LOADED
+window.onload = () => {
+  const favColor = localStorage.getItem("favColor");
+  if (favColor) {
+    document.documentElement.style.setProperty("--mainColor", favColor);
+  }
+};
+// CHECK SOME CODE AFTER WINDOW LOADED
+// START_SIDENAVBAR_TOGGLER
+const settingIcon = document.getElementById("settingIcon");
+console.log(settingIcon);
+const sideNavBar = document.querySelector("div.sideNavBar");
+settingIcon.onclick = () => {
+  sideNavBar.classList.toggle("activeSideNavBar");
+};
+// END_SIDENAVBAR_TOGGLER
 // START_WORD_WRITER_FUNCTION_CODEING
 /**
  * => ACCEPT ELEMENT TO MANPULATE THAT FUNCTION
@@ -30,7 +46,6 @@ const headerTitle = document.getElementById("headerTitle");
 wordWriter(headerTitle, "Web Developer");
 /*=> START_TOGGLEg_ACTIVE_CLASS_INTO_NAVBAR_LINKS */
 const links = document.querySelector("ul.navbar-nav").children;
-console.log(links);
 for (let i = 0; i < links.length; i++) {
   links[i].onclick = function () {
     const dataScroll = this.getAttribute("data-scroll");
@@ -74,3 +89,45 @@ for (let i = 0; i < skillPercents.length; i++) {
   skillPercents[i].children[0].textContent = percent;
 }
 /*=> DAYNMICALLY_SET_WIDTH_TO_SKILL */
+/*=> ON_SCROLL_CODES */
+const toTop = document.querySelector("div.toTop");
+
+window.onscroll = () => {
+  const scroll = window.scrollY;
+  if (scroll > 400) {
+    toTop.style.bottom = "50px";
+  } else {
+    toTop.style.bottom = "-50px";
+  }
+  toTop.onclick = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+};
+/*=> ON_SCROLL_CODES */
+//document.documentElement.style.setProperty("--mainColor", "#f00");
+/**
+ * => CHENCK_COLOR_CODEING
+ */
+const colorList = document.querySelectorAll(".sideNavBar div.colors ul li");
+// LOOP TO ALL COLOR LIST
+for (let i = 0; i < colorList.length; i++) {
+  // WHEN SOME OF THEM CLICKED
+  colorList[i].onclick = function () {
+    // FIRST EXTRACT IT'S BACKGROUND COLOR
+    const activeColor = this.style.backgroundColor;
+    // SECOND UPDATE COLOR
+    document.documentElement.style.setProperty("--mainColor", activeColor);
+    // THIRD TRANPARENT ALL CHECK ICON IN ALL COLOR LIST
+    for (let i = 0; i < colorList.length; i++) {
+      colorList[i].children[0].style.color = "transparent";
+    }
+    // 4TH SET COLOR WHITE TO ACTIVE COLOR LIST
+    this.children[0].style.color = "#fff";
+    // SAVE UPDATE COLOR INTO LOCALSTORAGE
+    localStorage.setItem("favColor", activeColor);
+  };
+}
